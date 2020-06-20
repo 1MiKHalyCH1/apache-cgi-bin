@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  apache_cgi_bin:
+    build: project
+    ports:
+      - 31337:80
