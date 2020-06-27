@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 echo "Content-type: text/html"
 echo ""
 
@@ -14,9 +14,6 @@ if [ -z "$QUERY_STRING" ]; then
 else
     cmd=`echo "$QUERY_STRING" | sed -n 's/^.*cmd=\([^&;]*\).*$/\1/p' | sed "s/%20/ /g" | sed -E 's/[$|<>&*?.()\/]//g'`
     echo "cmd: $cmd"
-    old_path=$PATH
-    export PATH="/home/www-data/bin/"
     answer=`bash -c "$cmd"`
-    export PATH=old_path
     echo "answer: $answer"
 fi
